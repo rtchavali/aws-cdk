@@ -1,0 +1,6 @@
+s3:
+  bucket:
+    mys3aps1:
+      name: "mys3aps1"
+      versioning:
+        status: "Enabled"
