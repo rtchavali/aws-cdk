@@ -6,10 +6,6 @@ def get_rules():
     get_global_config = GlobalConfig().get_config()
     ipset_config = get_global_config['waf']['ipset']
     rulegroup_config = get_global_config['waf']['rulegroup']
-    print(rulegroup_config)
-    print(rulegroup_config['test-1'])
-    print(rulegroup_config['test-1']['rule_config'])
-    print(rulegroup_config['test-1']['rule_config']['priority'])
     rules = {
             'test-1': CfnRuleGroup.RuleProperty(
             name=rulegroup_config['test-1']['name'],

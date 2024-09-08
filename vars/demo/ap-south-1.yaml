@@ -6,6 +6,16 @@ s3:
         status: "Enabled"
 
 waf:
+  webacl:
+    test-2:
+      name: test-2-webacl
+      scope: 'REGIONAL'
+      visibility:
+        sampledRequestsEnabled: False
+        cloudWatchMetricsEnabled: False
+        metric-name: test-2-webacl-metric
+        
+
   rulegroup:
     test-1:
       name: test-1-rg
