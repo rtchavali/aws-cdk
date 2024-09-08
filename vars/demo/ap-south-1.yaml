@@ -4,3 +4,41 @@ s3:
       name: "mys3aps1"
       versioning:
         status: "Enabled"
+
+waf:
+  rulegroup:
+    test-1:
+      name: test-1-rg
+      metric-name: test-1-rg-metric
+      scope: "REGIONAL"
+      visibility:
+        sampledRequestsEnabled: False
+        cloudWatchMetricsEnabled: False
+      capacity: 50
+      rule_config:
+        priority: 0
+        limit: 1000
+    test-2:
+      name: test-2-rg
+      metric-name: test-2-rg-metric
+      visibility:
+        sampledRequestsEnabled: False
+        cloudWatchMetricsEnabled: False
+      rule_config:
+        priority: 1
+      
+  ipset:
+    test-2:
+      name: test-2-ipset
+      scope: REGIONAL
+      ip_address_version: IPV4
+      addresses:
+        - "192.168.0.1/32"
+        - "203.0.113.0/24"
+    # ipset-test-2:
+        # name: ipset-test-2
+        # scope: REGIONAL
+        # ip_address_version: IPV4
+        # addresses:
+        #   - "10.0.0.1/32"
+        #   - "10.0.0.2/32"

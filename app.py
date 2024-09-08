@@ -4,8 +4,10 @@ import yaml
 import aws_cdk as cdk
 from global_config import GlobalConfig
 from aws_cdk_code.aws_cdk_stack import AwsCdkStack
-
 from stacks.s3.bucket.s3bucketstack import S3BucketStack
+from stacks.waf.ipset.IpSetStack import WafIpSetStack
+from stacks.waf.rulegroup.RuleGroupStack import WafRuleGroupStack
+
 
 def get_properties(file_path: str) -> dict:
     """
@@ -55,6 +57,14 @@ S3BucketStack(
     f"{environment}-{region}-s3BucketStack"
     )
 
+waf_ip_stack = WafIpSetStack(app,
+              f"{environment}-{region}-WafIpSetStack"
+            )
 
+waf_rulegroup_stack = WafRuleGroupStack(app,
+              f"{environment}-{region}-WafRuleGroupStack"
+            )
+
+waf_rulegroup_stack.add_dependency(waf_ip_stack)
 
 app.synth()
