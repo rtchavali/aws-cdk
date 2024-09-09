@@ -7,12 +7,15 @@ def get_rules():
     ipset_config = get_global_config['waf']['ipset']
     rulegroup_config = get_global_config['waf']['rulegroup']
     rules = {
-            'test-1': CfnRuleGroup.RuleProperty(
+        'test-1': 
+        CfnRuleGroup.RuleProperty(
+
             name=rulegroup_config['test-1']['name'],
             priority=rulegroup_config['test-1']['rule_config']['priority'],
             action=CfnRuleGroup.RuleActionProperty(
                 block={}
             ),
+
             statement=CfnRuleGroup.StatementProperty(
                 rate_based_statement=CfnRuleGroup.RateBasedStatementProperty(
                     limit=rulegroup_config['test-1']['rule_config']['limit'],
@@ -26,9 +29,10 @@ def get_rules():
             )
         ),
 
-        'test-2': CfnRuleGroup.RuleProperty(
+        'test-2': 
+        CfnRuleGroup.RuleProperty(
             name=rulegroup_config['test-2']['name'],
-            priority=rulegroup_config['test-1']['rule_config']['priority'],  # Higher priority than rate limit rule
+            priority=rulegroup_config['test-2']['rule_config']['priority'], 
             action=CfnRuleGroup.RuleActionProperty(
                 block={}  # Can also use "allow" or "count" as needed
             ),

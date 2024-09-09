@@ -4,6 +4,10 @@ s3:
       name: "mys3aps1"
       versioning:
         status: "Enabled"
+    mys3aps2:
+      name: "mys3aps2"
+      versioning:
+        status: "Enabled"
 
 waf:
   webacl:
@@ -36,7 +40,6 @@ waf:
         cloudWatchMetricsEnabled: False
       rule_config:
         priority: 1
-      
   ipset:
     test-2:
       name: test-2-ipset
